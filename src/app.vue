@@ -10,6 +10,7 @@ export default {
       drawer: false,
       items: [
         { label: 'Facturas', to: '/bills'},
+        { label: 'Añadir Factura', to: '/add-bill'},
       ],
       notItems: [
         { label: 'Inicio', to: '/home'},

@@ -6,11 +6,24 @@ export default {
   components: {BillCard},
   props: { bills: Array }
 }
-
 </script>
 
 <template>
-  <div v-for="bill in bills">
-    <bill-card :bill="bill"/>
+  <div class="card-container">
+    <bill-card v-for="bill in bills" :key="bill.id" :bill="bill"/>
   </div>
 </template>
+
+<style scoped>
+.card-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  height: 100vh;
+  background-image: url('https://movypay.com/wp-content/uploads/2019/10/Fotolia_182043508_Subscription_Monthly_M.jpg');
+  background-size: cover;
+  background-position: center;
+}
+</style>

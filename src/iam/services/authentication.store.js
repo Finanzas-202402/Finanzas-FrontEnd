@@ -55,12 +55,11 @@ export const useAuthenticationStore = defineStore({
         async signIn(signInRequest, router) {
             authenticationService.signIn(signInRequest)
                 .then(response => {
-                    let signInResponse = new SignInResponse(response.data.id, response.data.email, response.data.username, response.data.token);
+                    let signInResponse = new SignInResponse(response.data.id, response.data.token, response.data.username);
                     this.signedIn = true;
                     this.userId = signInResponse.id;
-                    this.username = signInResponse.username;
-                    this.email = signInResponse.email;
                     localStorage.setItem('token', signInResponse.token);
+                    this.username = signInResponse.username;
                     console.log(signInResponse);
                     router.push({name: 'bills'});
                 })
