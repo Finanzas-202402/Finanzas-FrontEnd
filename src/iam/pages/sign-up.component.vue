@@ -93,7 +93,8 @@ export default {
 }
 
 .signup-container {
-  max-width: 80vh;
+  min-width: 50vh;
+  min-height: 50vh;
   margin: 2rem auto 0;
   padding: 2rem;
   border: 1px solid #d1d1d1;

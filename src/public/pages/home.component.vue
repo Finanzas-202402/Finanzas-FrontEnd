@@ -59,7 +59,7 @@ p {
   margin: 10px 0;
 }
 
-.get-button {
+.label-button {
   background-color: #2196f3;
   color: white;
   border: none;
@@ -67,9 +67,10 @@ p {
   font-size: 1em;
   border-radius: 50px;
   cursor: pointer;
+  margin: 10px 0;
 }
 
-.get-button:hover {
+.label-button:hover {
   background-color: #0d89ec;
 }
 </style>

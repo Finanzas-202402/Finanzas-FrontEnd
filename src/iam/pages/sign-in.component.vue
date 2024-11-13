@@ -63,7 +63,8 @@ export default {
 }
 
 .signin-container {
-  max-width: 80vh;
+  min-width: 50vh;
+  min-height: 50vh;
   margin: 2rem auto 0;
   padding: 2rem;
   border: 1px solid #d1d1d1;
@@ -72,7 +73,6 @@ export default {
   font-family: Arial, sans-serif;
   background: rgba(0, 0, 0, 0.8);
 }
-
 .form-title {
   font-size: 1.5rem;
   text-align: center;

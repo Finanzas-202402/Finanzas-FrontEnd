@@ -62,7 +62,7 @@ export const useAuthenticationStore = defineStore({
                     this.email = signInResponse.email;
                     localStorage.setItem('token', signInResponse.token);
                     console.log(signInResponse);
-                    router.push({name: 'home'});
+                    router.push({name: 'bills'});
                 })
                 .catch(error => {
                     console.error(error);
