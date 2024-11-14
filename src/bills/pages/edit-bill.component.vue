@@ -54,16 +54,10 @@ export default {
       expirationDate: '',
     }
   },
-  computed: {
-    currentUserId() {
-      return this.authenticationStore.currentUserId;
-    }
-  },
   created() {
     this.billsApi = new BillApiService();
 
     this.billsApi.getBillForId(this.billId).then((response) => {
-      console.log(response.data);
       let bill = response.data;
       this.bill = Bill.toDisplayableBill(bill);
 
@@ -86,7 +80,7 @@ export default {
         return;
       }
 
-      if (new Date(this.expirationDate) < new Date(this.startDate)) {
+      if (new Date(this.expirationDate) <= new Date(this.startDate)) {
         this.$toast.add({severity: 'error', summary: 'Error', detail: 'La fecha de expiración no puede ser anterior a la fecha de inicio', life: 3000});
         return;
       }

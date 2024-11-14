@@ -21,7 +21,6 @@ export default {
     this.billsApi = new BillApiService();
 
     this.billsApi.getBills(this.currentUserId).then((response) => {
-      console.log(response.data);
       let bills = response.data;
       this.bills = bills.map((bill) => Bill.toDisplayableBill(bill));
     });

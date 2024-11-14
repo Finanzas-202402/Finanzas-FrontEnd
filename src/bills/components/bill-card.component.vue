@@ -60,12 +60,10 @@ export default {
     this.billsApi = new BillApiService();
     if (this.bill.cancelled) {
       this.billsApi.getBillEac(this.bill.id).then((response) => {
-        console.log(response.data);
         this.eac = response.data;
       });
 
       this.billsApi.getBillFinalValue(this.bill.id).then((response) => {
-        console.log(response.data);
         this.value = response.data;
       });
     }

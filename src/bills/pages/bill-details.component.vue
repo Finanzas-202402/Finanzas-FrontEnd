@@ -59,6 +59,16 @@ export default {
       return this.bills.findIndex((bill) => bill.id === id);
     },
     updateBill() {
+      if (new Date(this.endDate) >= new Date(this.bill.expirationDate)) {
+        this.$toast.add({severity: 'error', summary: 'Error', detail: 'La fecha de descuento no puede ser posterior a la fecha de vencimiento.', life: 3000});
+        return;
+      }
+
+      if (new Date(this.endDate) <= new Date(this.bill.startDate)) {
+        this.$toast.add({severity: 'error', summary: 'Error', detail: 'La fecha de descuento no puede ser anterior a la fecha de emisión.', life: 3000});
+        return;
+      }
+
       this.bill.endDate = this.endDate;
       this.bill.cancelled = true;
       this.bill = Bill.fromDisplayableBill(this.bill);
@@ -79,18 +89,15 @@ export default {
     this.billsApi = new BillApiService();
 
     this.billsApi.getBillForId(this.billId).then((response) => {
-      console.log(response.data);
       let bill = response.data;
       this.bill = Bill.toDisplayableBill(bill);
 
       if (this.bill.cancelled) {
         this.billsApi.getBillEac(this.bill.id).then((response) => {
-          console.log(response.data);
           this.eac = response.data;
         });
 
         this.billsApi.getBillFinalValue(this.bill.id).then((response) => {
-          console.log(response.data);
           this.value = response.data;
         });
       }

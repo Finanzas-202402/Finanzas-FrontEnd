@@ -5,6 +5,10 @@ export class BillApiService {
         return http.get(`/bills/by-user/${userId}`);
     }
 
+    getCancelledBills(userId) {
+        return http.get(`/bills/by-cancelled/${userId}/true`);
+    }
+
     getBillForId(billId) {
         return http.get(`/bills/${billId}`);
     }
