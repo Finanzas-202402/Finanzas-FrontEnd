@@ -9,7 +9,19 @@ export class BillApiService {
         return http.get(`/bills/${billId}`);
     }
 
+    getBillFinalValue(billId) {
+        return http.get(`/bills/get-value/${billId}`);
+    }
+
+    getBillEac(billId) {
+        return http.get(`/bills/get-eac/${billId}`);
+    }
+
     create(billResource) {
         return http.post('/bills', billResource);
+    }
+
+    update(id, billResource) {
+        return http.put(`/bills/${id}`, billResource);
     }
 }
