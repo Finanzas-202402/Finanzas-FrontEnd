@@ -51,7 +51,7 @@ export default {
 .bill-card {
   display: flex;
   width: 23%;
-  height: 45%;
+  height: 40vh;
   box-sizing: border-box;
   justify-content: center;
   align-items: center;

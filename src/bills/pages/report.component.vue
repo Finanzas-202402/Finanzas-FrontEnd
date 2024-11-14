@@ -75,7 +75,6 @@ export default {
   align-items: center;
   flex-wrap: wrap;
   gap: 1rem;
-  width: 100%;
   height: 70%;
 }
 
@@ -84,11 +83,11 @@ export default {
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  height: 100vh;
   background-image: url('https://movypay.com/wp-content/uploads/2019/10/Fotolia_182043508_Subscription_Monthly_M.jpg');
   background-size: cover;
   background-position: center;
-  overflow-y: hidden;
+  background-attachment: fixed;
+  overflow-y: auto;
 }
 
 h1 {

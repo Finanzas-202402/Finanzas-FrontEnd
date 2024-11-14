@@ -173,11 +173,12 @@ export default {
   align-items: center;
   flex-wrap: wrap;
   gap: 1rem;
-  height: 100vh;
   background-image: url('https://movypay.com/wp-content/uploads/2019/10/Fotolia_182043508_Subscription_Monthly_M.jpg');
   background-size: cover;
   background-position: center;
   padding: 2rem;
+  background-attachment: fixed;
+  overflow-y: auto;
 }
 
 .bill-container {
