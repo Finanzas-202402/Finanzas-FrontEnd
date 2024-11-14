@@ -51,6 +51,9 @@ export default {
   methods: {
     onBillDetails() {
       this.$router.push({ name: 'bill-details', params: { billId: this.bill.id } });
+    },
+    onBillEdit() {
+      this.$router.push({ name: 'edit-bill', params: { billId: this.bill.id } });
     }
   },
   created() {
@@ -98,7 +101,7 @@ export default {
         <p class="expiration-message">Tasa de Coste Efectivo Anual (TCEA) de la factura: {{ this.eac.toFixed(7) }}%</p>
       </div>
       <div v-if="bill.cancelled === false" class="form-grid">
-        <pv-button class="label-button" @click="onBillDetails">Editar</pv-button>
+        <pv-button class="label-button" @click="onBillEdit">Editar</pv-button>
         <pv-button class="label-button" @click="onBillDetails">Descontar</pv-button>
       </div>
       <div v-else>

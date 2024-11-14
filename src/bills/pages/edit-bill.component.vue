@@ -5,10 +5,11 @@ import {Bill} from "../model/bill.entity.js";
 import {useAuthenticationStore} from "../../iam/services/authentication.store.js";
 
 export default {
-  name: "add-bill",
+  name: "edit-bill",
   data() {
     return {
       router: useRouter(),
+      billId: this.$route.params.billId,
       bills: [],
       bill: {},
       billsApi: null,
@@ -60,9 +61,25 @@ export default {
   },
   created() {
     this.billsApi = new BillApiService();
+
+    this.billsApi.getBillForId(this.billId).then((response) => {
+      console.log(response.data);
+      let bill = response.data;
+      this.bill = Bill.toDisplayableBill(bill);
+
+      this.description = this.bill.description;
+      this.billValue = this.bill.billValue;
+      this.currency = this.currencyOptions.find(option => option.value === this.bill.currency);
+      this.rateType = this.rateTypeOptions.find(option => option.value === this.bill.rateType);
+      this.rateTime = this.rateTimeOptions.find(option => option.value === this.bill.rateTime);
+      this.capitalization = this.capitalizationOptions.find(option => option.value === this.bill.capitalization);
+      this.rateValue = this.bill.rateValue;
+      this.startDate = this.bill.startDate;
+      this.expirationDate = this.bill.expirationDate;
+    });
   },
   methods: {
-    createBill() {
+    updateBill() {
       if (!this.description || !this.billValue || !this.currency || !this.rateType ||
           !this.rateTime || !this.rateValue || !this.startDate || !this.expirationDate) {
         this.$toast.add({severity: 'error', summary: 'Error', detail: 'Asegúrese de completar todos los campos', life: 3000});
@@ -74,7 +91,6 @@ export default {
         return;
       }
 
-      this.bill.id = 0;
       this.bill.description = this.description;
       this.bill.billValue = this.billValue;
       this.bill.currency = this.currency.value;
@@ -84,17 +100,25 @@ export default {
       this.bill.rateValue = this.rateValue;
       this.bill.startDate = this.startDate;
       this.bill.expirationDate = this.expirationDate;
-      this.bill.cancelled = false;
-      this.bill.userId = this.currentUserId;
+
       this.bill = Bill.fromDisplayableBill(this.bill);
-      this.billsApi.create(this.bill)
+      this.billsApi
+          .update(this.bill.id, this.bill)
           .then((response) => {
-            this.bill = Bill.toDisplayableBill(response.data);
-            this.bills.push(this.bill);
-            this.$toast.add({severity: 'success', summary: 'Éxito', detail: 'La factura se ha añadido con éxito', life: 3000});
+            this.$toast.add({severity: 'success', summary: 'Éxito', detail: 'La factura se ha modificado con éxito', life: 3000});
             this.router.push({name: "bills"});
+            this.bills[this.findIndexById(response.data.id)] = Bill.toDisplayableBill(response.data);
           });
     },
+    deleteBill() {
+      this.billsApi.delete(this.billId)
+          .then(() => {
+            this.bills = this.bills.filter((t) => t.id !== this.bill.id);
+            this.bill = {};
+            this.$toast.add({severity: 'success', summary: 'Éxito', detail: 'La factura se ha eliminado con éxito', life: 3000});
+            this.router.push({name: "bills"});
+          });
+    }
   }
 }
 </script>
@@ -102,8 +126,8 @@ export default {
 <template>
   <div class="full-container">
     <div class="new-bill-container">
-      <div class="form-title">Crear nueva factura</div>
-      <form @submit.prevent="createBill">
+      <div class="form-title">Editar factura</div>
+      <form @submit.prevent="updateBill">
         <div class="field mt-5">
           <pv-float-label>
             <p>Descripción de la factura</p>
@@ -162,8 +186,9 @@ export default {
             </pv-float-label>
           </div>
         </div>
-        <div class="field mt-5">
-          <button type="submit" class="p-button p-button-primary">Crear Factura</button>
+        <div class="field mt-5 form-grid-button">
+          <button type="submit" class="p-button p-button-primary">Guardar Cambios</button>
+          <button class="p-button p-button-primary delete-button" @click="deleteBill">Eliminar Factura</button>
         </div>
       </form>
     </div>
@@ -205,6 +230,18 @@ export default {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1rem;
+}
+
+.form-grid-button {
+  display: flex;
+  gap: 30vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.delete-button {
+  background-color: #f44336;
+  border-color: #f44336;
 }
 
 .form-title {

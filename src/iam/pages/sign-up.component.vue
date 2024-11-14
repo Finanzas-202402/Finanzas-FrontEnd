@@ -26,7 +26,7 @@ export default {
       let signUpRequest = new SignUpRequest(this.email, this.username, this.password);
       authenticationStore.signUp(signUpRequest, this.$router)
           .then((response) => {
-            this.$toast.add({severity: 'success', summary: 'Success', detail: 'El usuario se ha registrado con éxito', life: 3000});
+            this.$toast.add({severity: 'success', summary: 'Éxito', detail: 'El usuario se ha registrado con éxito', life: 3000});
           })
           .catch((error) => {
             this.$toast.add({severity: 'error', summary: 'Error', detail: 'El email ' + this.email + ' ya está en uso', life: 3000});

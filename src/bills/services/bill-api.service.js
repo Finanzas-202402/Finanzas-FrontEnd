@@ -24,4 +24,9 @@ export class BillApiService {
     update(id, billResource) {
         return http.put(`/bills/${id}`, billResource);
     }
+
+    delete(billId) {
+        return http.delete(`/bills/${billId}`);
+    }
+
 }

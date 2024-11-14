@@ -11,6 +11,7 @@ export default {
       items: [
         { label: 'Facturas', to: '/bills'},
         { label: 'Añadir Factura', to: '/add-bill'},
+        { label: 'Ver Reporte Financiero', to: '/report'},
       ],
       notItems: [
         { label: 'Inicio', to: '/home'},

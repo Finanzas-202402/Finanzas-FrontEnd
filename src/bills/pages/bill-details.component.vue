@@ -67,7 +67,7 @@ export default {
           .then((response) => {
             this.bills[this.findIndexById(response.data.id)] =
                 Bill.toDisplayableBill(response.data);
-            this.$toast.add({severity: 'success', summary: 'Success', detail: 'Se ha registrado el descuento de la factura con éxito', life: 3000});
+            this.$toast.add({severity: 'success', summary: 'Éxito', detail: 'Se ha registrado el descuento de la factura con éxito', life: 3000});
             this.router.push({name: "bills"});
           });
     },
@@ -143,8 +143,7 @@ export default {
         <div class="field mt-5">
           <pv-float-label>
             <p>Fecha de descuento de la factura</p>
-            <pv-input-text id="endDate" v-model="endDate" :class="{'p-invalid': !endDate}" type="datetime-local"
-                           :min="this.bill.startDate" :max="this.bill.expirationDate"/>
+            <pv-input-text id="endDate" v-model="endDate" :class="{'p-invalid': !endDate}" type="datetime-local"/>
           </pv-float-label>
         </div>
         <div class="field mt-5">
