@@ -8,4 +8,8 @@ export class BillApiService {
     getBillForId(billId) {
         return http.get(`/bills/${billId}`);
     }
+
+    create(billResource) {
+        return http.post('/bills', billResource);
+    }
 }

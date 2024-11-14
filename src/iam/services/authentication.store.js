@@ -65,7 +65,7 @@ export const useAuthenticationStore = defineStore({
                 })
                 .catch(error => {
                     console.error(error);
-                    router.push({name: 'sign-in'});
+                    router.push({name: 'home'});
                 });
         },
 
@@ -101,7 +101,7 @@ export const useAuthenticationStore = defineStore({
             this.email = '';
             this.username = '';
             localStorage.removeItem('token');
-            router.push({name: 'sign-in'});
+            router.push({name: 'home'});
         }
     }
 })

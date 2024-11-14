@@ -7,7 +7,8 @@ export default {
   data() {
     return {
       email: '',
-      password: ''
+      password: '',
+      authenticationStore: useAuthenticationStore()
     };
   },
   methods: {
@@ -73,6 +74,7 @@ export default {
   font-family: Arial, sans-serif;
   background: rgba(0, 0, 0, 0.8);
 }
+
 .form-title {
   font-size: 1.5rem;
   text-align: center;
