@@ -50,7 +50,7 @@ export default {
 <style scoped>
 .bill-card {
   display: flex;
-  width: 23%;
+  width: 65%;
   height: 40vh;
   box-sizing: border-box;
   justify-content: center;

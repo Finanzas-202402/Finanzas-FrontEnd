@@ -23,6 +23,7 @@ export default {
   gap: 1rem;
   background-image: url('https://movypay.com/wp-content/uploads/2019/10/Fotolia_182043508_Subscription_Monthly_M.jpg');
   background-size: cover;
+  height: 100vh;
   background-position: center;
   background-attachment: fixed;
   overflow-y: auto;

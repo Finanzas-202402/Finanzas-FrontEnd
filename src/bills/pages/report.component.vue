@@ -60,34 +60,51 @@ export default {
 
 <template>
   <div class="full-container">
-    <h1>Reporte de facturas canceladas</h1>
-    <div class="card-container">
-      <bill-cancelled-card-component v-for="bill in bills" :key="bill.id" :bill="bill"/>
+    <div class="content">
+      <h1>Reporte de facturas canceladas</h1>
+      <div class="card-container">
+        <bill-cancelled-card-component
+            v-for="bill in bills"
+            :key="bill.id"
+            :bill="bill"
+        />
+      </div>
+      <h1>
+        Tasa de Coste Efectiva Anual (TCEA) total de la cartera: {{ totalEac.toFixed(7) }}%
+      </h1>
     </div>
-    <h1>Tasa de Coste Efectiva Anual (TCEA) total de la cartera: {{ totalEac.toFixed(7) }}%</h1>
   </div>
 </template>
 
+
 <style scoped>
+.full-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column; /* Cambia a disposición en columna */
+  background-image: url('https://movypay.com/wp-content/uploads/2019/10/Fotolia_182043508_Subscription_Monthly_M.jpg');
+  background-size: cover;
+  height: 100vh;
+  background-position: center;
+  background-attachment: fixed;
+  overflow-y: auto;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  width: 100%;
+}
+
 .card-container {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
   gap: 1rem;
-  height: 70%;
-}
-
-.full-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  background-image: url('https://movypay.com/wp-content/uploads/2019/10/Fotolia_182043508_Subscription_Monthly_M.jpg');
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-  overflow-y: auto;
 }
 
 h1 {
