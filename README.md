@@ -1,5 +1,25 @@
-# Vue 3 + Vite
+# Virtual Wallet Application
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+## Summary
+Virtual Wallet Application, illustrating REST client with axios on a Back-End API, using Vue Framework and PrimeVue UI Component Library. The application also shows how to support in-app navigation routing.
 
-Learn more about IDE Support for Vue in the [Vue Docs Scaling up Guide](https://vuejs.org/guide/scaling-up/tooling.html#ide-support).
+## Features
+- REST client with axios
+- Simulated API with json-server
+- PrimeVue UI Component Library
+- In-app navigation routing
+- Reusable components
+
+## Dependencies
+- Vue
+- Axios
+- PrimeVue
+- Vue Router
+
+## Identity and Access Management Features
+In this version, the application includes support for user identity and access management. The following features are available:
+- Sign Up
+- Sign In
+- Sign Out
+
+In order to use these features, you need to replace the server base path, so it references the Identity and Access Management Server implemented with ASP.NET Core Web API.
