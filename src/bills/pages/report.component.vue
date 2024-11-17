@@ -82,7 +82,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column; /* Cambia a disposición en columna */
+  flex-direction: column;
   background-image: url('https://movypay.com/wp-content/uploads/2019/10/Fotolia_182043508_Subscription_Monthly_M.jpg');
   background-size: cover;
   height: 100vh;
