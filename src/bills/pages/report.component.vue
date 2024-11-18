@@ -3,11 +3,11 @@ import { useRouter } from "vue-router";
 import { BillApiService } from "../services/bill-api.service.js";
 import { Bill } from "../model/bill.entity.js";
 import { useAuthenticationStore } from "../../iam/services/authentication.store.js";
-import BillCancelledCardComponent from "../components/bill-cancelled-card.component.vue";
+import BillCancelledListComponent from "../components/bill-cancelled-list.component.vue";
 
 export default {
   name: "report",
-  components: { BillCancelledCardComponent },
+  components: { BillCancelledListComponent },
   data() {
     return {
       router: useRouter(),
@@ -62,19 +62,18 @@ export default {
   <div class="full-container">
     <div class="content">
       <h1>Reporte de facturas canceladas</h1>
-      <div class="card-container">
-        <bill-cancelled-card-component
-            v-for="bill in bills"
-            :key="bill.id"
-            :bill="bill"
-        />
+      <div class="cards-container">
+        <bill-cancelled-list-component :bills="bills" />
       </div>
-      <h1>
-        Tasa de Coste Efectiva Anual (TCEA) total de la cartera: {{ totalEac.toFixed(7) }}%
-      </h1>
+      <div class="tcea-container">
+        <h1>
+          Tasa de Coste Efectiva Anual (TCEA) total de la cartera: {{ totalEac.toFixed(7) }}%
+        </h1>
+      </div>
     </div>
   </div>
 </template>
+
 
 
 <style scoped>
@@ -99,14 +98,6 @@ export default {
   width: 100%;
 }
 
-.card-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 1rem;
-}
-
 h1 {
   color: #ffffff;
   background-color: rgba(0, 0, 0, 0.7);
@@ -117,5 +108,24 @@ h1 {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
   font-weight: bold;
   font-size: 1.8rem;
+}
+
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.cards-container > * {
+  flex: 1 1 calc(30% - 1rem);
+  min-width: 250px;
+}
+
+.tcea-container {
+  text-align: center;
+  margin-top: 2rem;
 }
 </style>
