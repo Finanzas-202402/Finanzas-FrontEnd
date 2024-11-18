@@ -196,7 +196,7 @@ export default {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-image: url('https://movypay.com/wp-content/uploads/2019/10/Fotolia_182043508_Subscription_Monthly_M.jpg');
+  background-image: url('https://cdn.aarp.net/content/dam/aarp/money/credit_loans_debt/2022/05/1140-cellphone-bitcoins-digital-wallet-es.jpg');
   background-size: cover;
   background-position: center;
 }
